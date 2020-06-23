@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sh-deployment
+  labels:
+    app: sample-http
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-http
+  template:
+    metadata:
+      labels:
+        app: sample-http
+    spec:
+      containers:
+      - name: sample-http
+        image: gi4nks/sample-http:latest
+        ports:
+        - containerPort: 8080
